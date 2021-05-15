@@ -7,22 +7,23 @@ defmodule Rebar3Test.MixProject do
       version: "0.1.0",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
+      # Set build_embedded to false to fix the issue
       build_embedded: true,
       deps: deps()
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:logger]
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:plug_cowboy, "~> 2.0"},
+      # Commenting in the following line in to downgrade cowboy also fixes the issue
+      # {:cowboy, "2.8.0"}
     ]
   end
 end
